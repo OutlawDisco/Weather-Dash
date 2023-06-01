@@ -1,55 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/styles.css">
-</head>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="assets/styles.css" />
+  </head>
 
-<body>
+  <body>
     <header>Weather Dash</header>
     <!-- City search section -->
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
-                <div class="search-card">
-                    <h2>City Search</h2>
-                    <form>
-                        <input id="city-search"type="text" placeholder="Search..">
-                        <button id ="search-btn" type="button" class="btn btn-primary">Search
-                        </button>
-                    </form>
-                </div>
-                <!--Past city search section-->
-                <div class="past-search">
-                    <ul class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action active" aria-current="true">The
-                            current
-                            city item
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">A second city link item</a>
-                        <a href="#" class="list-group-item list-group-item-action">A third city link item</a>
-                        <a href="#" class="list-group-item list-group-item-action">A fourth city link item</a>
-                        <a class="list-group-item list-group-item-action disabled">A disabled city link item</a>
-                    </ul>
-
-                </div>
-            </div>
-                <!-- current weather section-->
-                <div class="col-sm-12 col-md-6 col-lg-8">
-                    <h2 class="subtitle">Todays forecast for: <span id="city-search-term"></span></h2>
-                    <div id="weather-container" class="list-group"></div>
-                </div>
-                
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+          <div class="search-card">
+            <h2>City Search</h2>
+            <form>
+              <input id="city-search" type="text" placeholder="Search.." />
+              <button id="search-btn" type="button" class="btn btn-primary">
+                Search
+              </button>
+            </form>
+          </div>
+          <!--Past city search section-->
+          <div class="past-search">
+            <ul class="list-group">
+              <a
+                href="#"
+                class="list-group-item list-group-item-action active"
+                aria-current="true"
+              ></a>
+              <a href="#" class="list-group-item list-group-item-action"></a>
+              <a href="#" class="list-group-item list-group-item-action"></a>
+              <a href="#" class="list-group-item list-group-item-action"></a>
+              <a class="list-group-item list-group-item-action disabled"></a>
+            </ul>
+          </div>
         </div>
-        <footer></footer>
-        <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-            integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
-        <script type="text/javascript" src="assets/script.js"></script>
-</body>
-
+        <!-- current weather section-->
+        <div class="col-sm-12 col-md-6 col-lg-8">
+          <h2 class="subtitle">
+            Todays forecast for: <span id="city-search-term"></span>
+          </h2>
+          <div id="weather-container" class="list-group">
+            <h5 class="card-title" id="weather-title"></h5>
+            <p class="card-text" id="weather-temp"></p>
+            <p id="weather-date"></p>
+            <img
+              id="weather-icon"
+              alt="Weather Icon"
+              width="25%"
+              height="25%"
+            />
+            <p id="weather-description"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer></footer>
+    <script
+      src="https://code.jquery.com/jquery-3.7.0.min.js"
+      integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g="
+      crossorigin="anonymous"
+    ></script>
+    <script type="text/javascript" src="assets/script.js"></script>
+  </body>
 </html>

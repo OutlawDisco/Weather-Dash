@@ -4,15 +4,21 @@ var apiKey = "e8f8a9be4e4f0bfebfb74b6ac11db16c";
 var searchBtn = $("#search-btn");
 var searchInput = $("#city-search");
 
-// renderLastSearch();
-
 function citySearchHandler(event) {
   var userInput = searchInput.val();
   //   console.log("search", userInput);
   dailyForecast(userInput);
   fiveDayForecast(userInput);
   searchHistory(userInput);
+  renderLastSearch(userInput);
 }
+
+// function renderLastSearch(city) {
+//   const citySearch = JSON.stringify(userInput);
+
+//   localStorage.setItem(searchInput.val(), citySearch);
+//   console.log("", citySearch);
+// }
 
 function fiveDayForecast(city) {
   //   console.log("5-day!", city);
@@ -22,6 +28,9 @@ function fiveDayForecast(city) {
     method: "GET",
   }).then(function (response) {
     console.log("5-day", response);
+    //     const data = response;
+    //     $("#weather-five-title").text(`${data.name} -${data.list[0].main}`);
+    //   });
   });
 }
 
@@ -41,16 +50,17 @@ function dailyForecast(city) {
       `Temperature: ${((data.main.temp * 9) / 5 - 459.67).toFixed(2)}°F`
     );
     $("#weather-date").text();
+    $("#wind-chill").text(`Wind: ${data.wind.speed}`);
     $("#weather-icon").attr(
       "src",
-      `http://openweathermap.org/img/wn/${data.weather[0].icon}.png`
+      `https://openweathermap.org/img/wn/${data.weather[0].icon}.png`
     );
     $("#weather-description").text(`${data.weather[0].description}`);
   });
 }
 
 function searchHistory(city) {
-  return "", city;
+  console.log("search history", city);
 }
 
 searchBtn.on("click", citySearchHandler);

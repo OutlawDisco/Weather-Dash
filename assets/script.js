@@ -1,8 +1,12 @@
+// var citySearchArray = ["", "", ""];
 var weatherContainerEl = $("#weather-container");
 var pastWeatherSearchEl = $(".list-group");
 var apiKey = "e8f8a9be4e4f0bfebfb74b6ac11db16c";
 var searchBtn = $("#search-btn");
 var searchInput = $("#city-search");
+
+// var citySearchHistory =
+//   JSON.parse(localStorage.getItem("citySearch")) || citySearch;
 
 function citySearchHandler(event) {
   var userInput = searchInput.val();
@@ -12,7 +16,6 @@ function citySearchHandler(event) {
   searchHistory(userInput);
   // renderLastSearch(userInput);
 }
-
 // function renderLastSearch(city) {
 //   const citySearch = JSON.stringify(userInput);
 

@@ -10,7 +10,7 @@ function citySearchHandler(event) {
   dailyForecast(userInput);
   fiveDayForecast(userInput);
   searchHistory(userInput);
-  renderLastSearch(userInput);
+  // renderLastSearch(userInput);
 }
 
 // function renderLastSearch(city) {
@@ -21,22 +21,44 @@ function citySearchHandler(event) {
 // }
 
 function fiveDayForecast(city) {
-  //   console.log("5-day!", city);
-  var url = `https://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&q=${city}`;
+  console.log("5-day!", city);
+  var url = `https://api.openweathermap.org/data/2.5/forecast?appid=${apiKey}&q=${city}&units=imperial`;
   $.ajax({
     url: url,
     method: "GET",
   }).then(function (response) {
-    console.log("5-day", response);
-    //     const data = response;
-    //     $("#weather-five-title").text(`${data.name} -${data.list[0].main}`);
-    //   });
+    const data = response;
+    console.log("date", data.list.dt);
+    console.log(data);
+
+    for (let i = 0; i < data.list.length; i++) {
+      const element = data.list[i];
+      if (element.dt_txt.includes("12:00:00")) {
+        const card = `
+        <div class="list-group">
+            <h5 class="card-title" id="weather-five-title"></h5>
+            <img
+              id="weather-icon"
+              height="10%"
+              width="10%
+              src= https://openweathermap.org/img/wn/${element.weather[0].icon}.png
+            />
+            <p id="weather-day">${element.dt_txt}</p>
+            <p class="card-text" id="weather-list temp">temp: ${element.main.temp}°F</p>
+            <p id="weather-description">${element.weather[0].description}</p> 
+            <p id = "wind">wind speed: ${element.wind.speed}</p>
+          </div>
+        `;
+        document.querySelector("#forecast-container").innerHTML += card;
+      }
+    }
+    $("#weather-list-temp").text(`Temperature: ${data.list.main.temp}°F`);
   });
 }
 
 function dailyForecast(city) {
   //  console.log("daily", city);
-  var url = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}`;
+  var url = `https://api.openweathermap.org/data/2.5/weather?appid=${apiKey}&q=${city}&units=imperial`;
   $.ajax({
     url: url,
     method: "GET",
@@ -46,9 +68,7 @@ function dailyForecast(city) {
     const data = response;
     console.log("name", data.name);
     $("#weather-title").text(`${data.name} - ${data.weather[0].main}`);
-    $("#weather-temp").text(
-      `Temperature: ${((data.main.temp * 9) / 5 - 459.67).toFixed(2)}°F`
-    );
+    $("#weather-temp").text(`Temperature: ${data.main.temp}°F`);
     $("#weather-date").text();
     $("#wind-chill").text(`Wind: ${data.wind.speed}`);
     $("#weather-icon").attr(
